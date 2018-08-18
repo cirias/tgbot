@@ -66,7 +66,7 @@ func (b *Bot) GetUpdates(params *GetUpdatesParams) ([]*Update, error) {
 
 	var updates []*Update
 	if err := json.Unmarshal(result, &updates); err != nil {
-		return nil, fmt.Errorf("could not unmarshal updates: %s", err)
+		return nil, fmt.Errorf("could not unmarshal updates: %s %s", err, string(result))
 	}
 
 	return updates, nil
