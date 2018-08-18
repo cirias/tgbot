@@ -32,9 +32,14 @@ type Update struct {
 
 type Message struct {
 	Id       int64             `json:"message_id"`
+	From     *User             `json:"from"`
 	Chat     *Chat             `json:"chat"`
 	Text     string            `json:"text"`
 	Entities []*MessageEnitity `json:"entities"`
+}
+
+type User struct {
+	Id int64 `json:"id"`
 }
 
 func (m *Message) Command() (string, string) {
