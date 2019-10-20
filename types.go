@@ -10,18 +10,18 @@ type GetUpdatesParams struct {
 }
 
 type SendMessageParams struct {
-	ChatId      int64                 `json:"chat_id"`
-	Text        string                `json:"text"`
-	ParseMode   string                `json:"parse_mode,omitempty"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId      int64       `json:"chat_id"`
+	Text        string      `json:"text"`
+	ParseMode   string      `json:"parse_mode,omitempty"`
+	ReplyMarkup interface{} `json:"reply_markup,omitempty"`
 }
 
 type EditMessageTextParams struct {
-	ChatId      int64                 `json:"chat_id"`
-	MessageId   int64                 `json:"message_id	"`
-	Text        string                `json:"text"`
-	ParseMode   string                `json:"parse_mode,omitempty"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId      int64       `json:"chat_id"`
+	MessageId   int64       `json:"message_id	"`
+	Text        string      `json:"text"`
+	ParseMode   string      `json:"parse_mode,omitempty"`
+	ReplyMarkup interface{} `json:"reply_markup,omitempty"`
 }
 
 type Update struct {
@@ -79,9 +79,22 @@ type InlineKeyboardMarkup struct {
 	InlineKeyboard [][]*InlineKeyboardButton `json:"inline_keyboard"`
 }
 
+type ReplyKeyboardMarkup struct {
+	Keyboard        [][]*KeyboardButton `json:"keyboard"`
+	ResizeKeyboard  bool                `json:"resize_keyboard"`
+	OneTimeKeyboard bool                `json:"one_time_keyboard"`
+	Selective       bool                `json:"selective"`
+}
+
 type InlineKeyboardButton struct {
 	Text         string `json:"text"`
 	CallbackData string `json:"callback_data,omitempty"`
+}
+
+type KeyboardButton struct {
+	Text            string `json:"text"`
+	RequestContact  bool   `json:"request_contact"`
+	RequestLocation bool   `json:"request_location"`
 }
 
 type ResponseBody struct {
